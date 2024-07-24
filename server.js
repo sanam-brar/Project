@@ -58,15 +58,26 @@ app.post("/signup-process",function(req,resp)
     var account=req.body.accs;
     var status=1;
 
-    mysql.query("insert into users values(?,?,?,?)",[email,pwd,account,status],function(err,res){
+    mysql.query("insert into users values(?,?,?,?)",[email,pwd,account,status],function(err){
         if(err)
             {
                 resp.send(err);
             }
             else 
             {
-                resp.send(res);
-                console.log("successful");
+                
+            mysql.query("Select * from users where email=?",[email],function(err,res)
+            {
+            if(err!=null)
+            {
+            // resp.send(err.message);
+            console.log(err.message);
+            return;
+            }
+            resp.send(res);
+            // console.log(resultt);
+             })
+                
             }
     })
 
