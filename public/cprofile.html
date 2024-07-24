@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+      function doPrev(fileCtrl,imgPrev)
+      {
+          let [file] = fileCtrl.files
+          if (file) {
+              imgPrev.src = URL.createObjectURL(file)
+          }
+      }
+  </script>
+  <script>
+    $(document).ready(function(){
+
+      let active=localStorage.getItem("activeuser");
+      $("#inputEmail").val(active).prop("readonly",true);
+      
+                let obj={
+                    type:"post",
+                    url:"/find-client-details",
+                    data:{
+                        txtEmail:localStorage.getItem("activeuser")
+                    }
+                }
+                $.ajax(obj).done(function(jsonAry){
+                    if(jsonAry.length==0)
+                    {
+                        // alert("Invalid ID");
+                        return;
+                    }
+
+                    // console.log(JSON.stringify(jsonAry));
+                    $("#name").val(jsonAry[0].name);
+                    $("#inputType").val(jsonAry[0].type);
+                    $("#inputPhone").val(jsonAry[0].phone);
+                    $("#inputAddress").val(jsonAry[0].address);
+                    $("#inputCity").val(jsonAry[0].city);
+                    $("#inputState").val(jsonAry[0].state);
+                    $("#inputZip").val(jsonAry[0].zip);
+
+
+                }).fail(function(err){
+                    alert(err.statusText);
+                })
+
+                let sv={
+                    type:"get",
+                    url:"/find-savec",
+                    data:{
+                        txtEmail:localStorage.getItem("activeuser")
+                    }
+                  }
+
+                    $.ajax(sv).done(function(jsonAryy){
+                        console.log(jsonAryy)
+                        if(jsonAryy.length==1)
+                    {
+                        $("#btnSave").prop("disabled",true);
+                        $("#btnUpdate").prop("disabled",false);
+                        
+                    }
+                    else if(jsonAryy.length==0)
+                    {
+                      $("#btnSave").prop("disabled",false);
+                      $("#btnUpdate").prop("disabled",true);
+                      
+                        return;
+                    }
+                    
+                }).fail(function(err){
+                    alert(err.statusText);
+                })
+                $("#btnLogout").click(function()
+      {
+        localStorage.removeItem("activeuser");
+        location.href="index.html";
+        window.location.replace("index.html");
+      })
+              
+  })
+  </script>
+  <style>
+    .txt
+    {
+      color: white;
+    }
+    input[type="email"],input[type="password"],input[type="text"],input[type="date"]{
+      background-color: black;
+      color: white;
+    }
+    option{
+      background-color: black;
+      color: white;
+    }
+    select{
+      background-color: black;
+      color: white;
+    }
+  </style>
+</head>
+<body style="background-color: black;">
+  <nav class="navbar  fixed-top" style="background-color: black;">
+    <div class="container-fluid">
+      <a class="navbar-brand fs-2" href="#" style="color: white; font-family:Georgia, 'Times New Roman', Times, serif" >
+        <img src="pics/Screenshot 2024-07-15 224854.png" alt="Logo" width="45" height="36" class="d-inline-block align-text-top">
+        CONNEXUS
+      </a>
+      <form class="d-flex" role="search">
+
+        <button type="button" class="btn btn-outline-light" id="btnLogout" style="margin-right: 5%;" >Logout</button>
+      </form>
+      
+    </div>
+  </nav>
+
+      <div class="row" style="margin-top: 6%;">
+        <div class="col-md-8 offset-md-2">
+          <div class="row">
+            <div class="col-md-12" style="margin-bottom: 3%;">
+              <center>
+              <span class="fs-1 txt" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" >PROFILE</span>
+              </center>
+            </div>
+          </div>
+            <form class="row g-3" method="post" >
+              <div class="col-md-12">
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <label for="inputEmail" class="form-label txt" >Email</label>
+                        <input type="email" style="background-color: black; color: white;" class="form-control" id="inputEmail" name="inputEmail" required>
+                      </div>
+                      <div class="col-md-6 ">
+                        <label for="name" class="form-label txt">Name</label>
+                        <input type="text" style="background-color: black; color: white;" class="form-control" id="name" name="name" placeholder="Name" aria-label="name" required>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="inputType" class="form-label txt">Clientel Type</label>
+                        <select id="inputType" name="inputType" class="form-select txt" style="background-color: black;">
+                        <option selected>Choose</option>
+                        <option value="Individual">Individual</option>
+                        <option value="Organization">Organization</option>
+                         </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="inputPhone" class="form-label txt">Phone</label>
+                        <input type="text" class="form-control" style="background-color: black; color: white;" id="inputPhone" name="inputPhone">
+                        </div>
+                        <div class="col-12">
+                            <label for="inputAddress" class="form-label txt">Address</label><span class="form-text"> (Optional)</span>
+                            <input type="text" class="form-control" style="background-color: black; color: white;" id="inputAddress" name="inputAddress" placeholder="Apartment, studio, or floor">
+                          </div>
+                          
+                          <div class="col-md-6">
+                            <label for="inputCity" class="form-label txt">City</label>
+                            <input type="text" class="form-control" style="background-color: black; color: white;" id="inputCity" name="inputCity">
+                          </div>
+                          <div class="col-md-4">
+                            <label for="inputState" class="form-label txt" >State</label>
+                            <select id="inputState" class="form-select txt" name="inputState" style="background-color: black;">
+                              <option selected>Choose..</option>
+                              <option  value="Andhra Pradesh">Andhra Pradesh</option>
+                              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                              <option value="Assam">Assam</option>
+                              <option value="Bihar">Bihar</option>
+                              <option value="Chhattisgarh">Chhattisgarh</option>
+                              <option value="Goa">Goa</option>
+                              <option value="Gujarat">Gujarat</option>
+                              <option value="Haryana">Haryana</option>
+                              <option value="Himachal Pradesh">Himachal Pradesh</option>
+                              <option value="Jharkhand">Jharkhand</option>
+                              <option value="Karnataka">Karnataka</option>
+                              <option value="Kerala">Kerala</option>
+                              <option value="Madhya Pradesh">Madhya Pradesh</option>
+                              <option value="Maharashtra">Maharashtra</option>
+                              <option value="Manipur">Manipur</option>
+                              <option value="Meghalaya">Meghalaya</option>
+                              <option value="Mizoram">Mizoram</option>
+                              <option value="Nagaland">Nagaland</option>
+                              <option value="Odisha">Odisha</option>
+                              <option value="Punjab">Punjab</option>
+                              <option value="Rajasthan">Rajasthan</option>
+                              <option value="Sikkim">Sikkim</option>
+                              <option value="Tamil Nadu">Tamil Nadu</option>
+                              <option value="Telangana">Telangana</option>
+                              <option value="Tripura">Tripura</option>
+                              <option value="Uttar Pradesh">Uttar Pradesh</option>
+                              <option value="Uttarakhand">Uttarakhand</option>
+                              <option value="West Bengal">West Bengal</option>
+                            </select>
+                          </div>
+                          <div class="col-md-2">
+                            <label for="inputZip" class="form-label txt">Zip</label>
+                            <input type="text" class="form-control" style="background-color: black; color: white;" id="inputZip" name="inputZip">
+                          </div>
+                          <div class="col-md-12" style="margin-top: 2%;">
+                            <center>
+                            <button type="submit" id="btnSave" class="btn btn-outline-success" formaction="/cprofile">Save</button>
+                            <button type="submit" id="btnUpdate" class="btn btn-outline-danger" formaction="/cprofile-update">Update</button>
+                            </center>
+                          </div>
+                
+                </div>
+              </div>
+                </form>
+        </div>
+      </div>
+      
+</body>
+</html>

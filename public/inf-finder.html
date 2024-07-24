@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Influencer Finder</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+         var module=angular.module("myKuchModule",[]);
+
+        var controller=module.controller("myKuchController",function($scope,$http)
+        {
+
+            
+            $scope.jsonArray;
+            $scope.jsonArrayAll;
+            $scope.jsonArraymodel;
+            $scope.fillCities=function()
+                {
+                    let url="/fetch-all-cities";
+                    $http.get(url).then(function(response)
+                    {
+                        //alert(JSON.stringify(response.data)) ;
+                        $scope.jsonArray=response.data;
+
+                    },function(err)
+                    {
+                        alert(err)
+                    });
+                    
+                }
+                $scope.doShowSel=function()
+                {
+                    
+                    let fields=$scope.inputField;
+                    
+                    let url="/show-selected?fields="+fields;
+
+                    $http.get(url).then(allIsWell,notWell);
+
+                    function allIsWell(response)
+                    {
+                        // console.log(JSON.stringify(response.data));
+                        $scope.jsonArray=response.data;
+                        // alert(response);
+
+
+                    }
+                    function notWell(err)
+                    {
+                        alert(err)
+                    }
+                
+                }
+                $scope.showAll=function()
+                {
+                    let url="/fetch-all-data";
+
+                    $http.get(url).then(allIsWell,notWell);
+
+                    function allIsWell(response)
+                    {
+                        // console.log(JSON.stringify(response.data));
+                        $scope.jsonArrayAll=response.data;
+                        // alert(response);
+
+
+                    }
+                    function notWell(err)
+                    {
+                        alert(err)
+                    }
+                }
+                $scope.showbyname=function()
+                {
+                    let url="/fetch-by-name?name="+$scope.inputName;
+
+                    $http.get(url).then(allIsWell,notWell);
+
+                    function allIsWell(response)
+                    {
+                        // console.log(JSON.stringify(response.data));
+                        $scope.jsonArrayAll=response.data;
+                        // alert(response);
+
+
+                    }
+                    function notWell(err)
+                    {
+                        alert(err)
+                    }
+                }
+                $scope.showbyfilter = function() 
+                {
+                let url = "/fetch-by-filter?field=" + $scope.inputField + "&city=" + $scope.inputCity;
+
+                $http.get(url).then(allIsWell, notWell);
+
+                function allIsWell(response) {
+                     $scope.jsonArrayAll = response.data;
+                    //  $scope.drop.prop("display","none");
+                }
+
+                 function notWell(err) {
+                    alert(err);
+                }
+                }
+                $scope.removeFilter=function()
+                {
+                    let url="/remove-filter"
+
+                    $http.get(url).then(allIsWell, notWell);
+
+                function allIsWell(response) {
+                     $scope.jsonArrayAll = response.data;
+                }
+
+                 function notWell(err) {
+                    alert(err);
+                }
+                }
+                $scope.doShowData=function(email)
+                {
+                    
+                
+                    let url="/modal-data?email="+email;
+
+                    $http.get(url).then(allIsWell,notWell);
+
+                    function allIsWell(response)
+                    {
+                        // console.log(JSON.stringify(response.data));
+                        $scope.jsonArraymodel=response.data;
+                        // alert(response);
+
+
+                    }
+                    function notWell(err)
+                    {
+                        alert(err)
+                    }
+                
+                }
+                $scope.doContact=function(email)
+                {
+                    let url="/contact-email-process?reciever="+email+" &comp="+localStorage.getItem("activeuser");
+
+                    $http.get(url).then(allIsWell,notWell);
+
+                    function allIsWell(response)
+                    {
+                        // console.log(JSON.stringify(response.data));
+                        // $scope.jsonArraymodel=response.data;
+                        // alert(response.data);
+                        $scope.data=response.data;
+                        // $scope.alert.prop("display","block");
+                        // $scope.txt.html(response.data);
+
+                    }
+                    function notWell(err)
+                    {
+                        console.log(err.statusText)
+                    }
+                }
+
+        })
+
+        
+    </script>
+    <script>
+        $(document).ready(function(){
+            $("#btnLogout").click(function()
+        {
+        localStorage.removeItem("activeuser");
+        location.href="index.html";
+        window.location.replace("index.html");
+        })
+        
+        })
+    </script>
+    
+    <style>
+        .a{
+            background-color: black;
+        }
+        .txt{
+            color: white;
+        }
+        label{
+            color: white;
+        }
+        input[type="text"]::placeholder{
+            color: white;
+        }
+        
+    </style>
+
+
+    
+
+</head>
+<body style="background-color: black;"  ng-app="myKuchModule" ng-controller="myKuchController" ng-init="fillCities();showAll();">
+
+    
+    <nav class="navbar  fixed-top" style="background-color: black;">
+        <div class="container-fluid">
+          <a class="navbar-brand fs-2" href="#" style="color: white; font-family:Georgia, 'Times New Roman', Times, serif" >
+            <img src="pics/Screenshot 2024-07-15 224854.png" alt="Logo" width="45" height="36" class="d-inline-block align-text-top">
+            CONNEXUS
+          </a>
+          <form class="d-flex" role="search">
+    
+            <button type="button" class="btn btn-outline-light" id="btnLogout" style="margin-right: 5%;" >Logout</button>
+          </form>
+          
+        </div>
+      </nav>
+
+    <div class="row g-2" style="margin-top: 6%;">
+       
+        <div class="col-md-10 offset-md-1">
+            <div class="row ">
+                <div class="col-md-3 txt">
+                    <h1 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Find Influencers</h1>
+                </div>
+                <div class="col-md-6">
+                    <div class="dropdown-center " style="margin-left: 40%;">
+                        
+                        <button type="button" class="btn btn-outline-light dropdown-toggle " id="btn"  data-bs-toggle="dropdown" data-bs-auto-close="false">
+                          Filters
+                        </button>
+
+                        <div class="container dropdown-menu " ng-model="drop" style="background-color: black;">
+                        <form class="row">
+                            <div class="col-md-4">
+                                <label for="inputField" id="inputField" class="form-label">Field</label>
+                                <select ng-model="inputField" style="background-color: black; color: white;" ng-change="doShowSel()" class="form-select txt" multiple size="4">
+                                    <option value="Sports">Sports</option>
+                                    <option value="Tech">Tech</option>
+                                    <option value="Coding">Coding</option>
+                                    <option value="Fashion">Fashion</option>
+                                    <option value="Fitness">Fitness</option>
+                                    <option value="Gaming">Gaming</option>
+                                    <option value="Finance">Finance</option>
+                                    <option value="Podcast">Podcast</option>
+                                    <option value="Music">Music</option>
+                                    <option value="Grooming">Grooming</option>
+                                    <option value="Comedy">Comedy</option>
+                                    <option value="Information">Info</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="inputCity" class="form-label">City</label>
+                                <select ng-model="inputCity" id="inputCity" class="form-select" style="background-color: black; color: white;"  size="4">
+                                    <option ng-repeat="obj in jsonArray" value="{{obj.city}}">{{obj.city}}</option>
+                                    <!-- <option ng-repeat="obj in jsonArraySel" value="{{obj.city}}">{{obj.city}}</option> -->
+                                </select>
+                            </div>    
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-outline-light" ng-model="btnFilter" style="margin-top: 40%;" ng-click="showbyfilter()">Apply</button>
+                                <button type="button" class="btn btn-outline-light" ng-model="btnRemoveFilter" style="margin-top: 10%;" ng-click="removeFilter()">Remove</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+                    <div class="col-md-2">
+                        <!-- <label for="inputName" class="form-label">Name</label> -->
+                        <input type="text" class="form-control" style="background-color: black; color: white;" name="inputName" ng-model="inputName" placeholder="Name">
+                    </div>
+                    <div class="col-md-1" style=>
+                        <button type="button" class="btn btn-outline-light" id="btnSearch" ng-click="showbyname()">Search</button>
+                    </div>
+            </div>
+        <div class="row g-3" style="margin-top: 3%;">
+                <div class="col-md-3" ng-repeat="obj in jsonArrayAll">
+
+                    <div class="card" style="background-color: black;box-shadow: 5px 5px 10px;">
+                        <center>
+                        <img ng-src="uploads/{{obj.ImgPath}}" class="card-img-top" alt="..." >
+                        </center>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="card-title txt">{{obj.fname}} {{obj.lname}}</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <span class="card-text txt">{{obj.ifields}}</span>
+                                </div>
+                                <div class="col-md-7">
+                                        <span class="card-text txt">{{obj.gender}}</span>
+                                        <br>
+                                        <span class="card-text txt">{{obj.city}}</span>   
+                                </div>
+                                <div class="col-md-5">
+                                    <button type="button" class="btn btn-outline-light" ng-click="doShowData(obj.email)" style="margin-top: 10%;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                        More Info
+                                      </button>
+                                </div>
+                            </div>
+                          
+                          
+                        </div>
+                      </div>
+            </div>
+            </div>
+        </div>
+        
+    </div>
+        </div>
+        
+    </div>
+
+
+    
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Details</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" ng-repeat="obj in jsonArraymodel">
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="row">
+                    <div class="col-md-7" id="left"  >
+                        <div class="row g-2">
+                            <div class="col-md-12 ">
+                                <div class="row">
+                                    <div class="col-md-12 a">
+                                        <center>
+                                            <h5 style="color: white;">{{obj.fname}} {{obj.lname}}</h5>
+                                            </center>
+                                    </div>
+                                    <div class="col-md-12 a">
+                                        <center>
+                                            <img ng-src="uploads/{{obj.ImgPath}}" alt="" width="80%" height="auto" style="border-radius: 50%; border: 2px white solid;">
+                                        </center>
+                                        <br>
+                                    </div>
+                                    
+                                    <div class="col-md-12 a">
+                                        <p style="color: white;">Bio : </p>
+                                         <center>
+                                         <textarea name="" id="" style="width: 80%; height: 80%; background-color: black; color: white;">{{obj.txt}}</textarea>
+                                         </center>
+                                     </div>
+                                     <div class="col-md-12 a">
+                                         
+                                             <p style="color: white;"><i class="fa-regular fa-envelope" style="color: #ffffff;"></i> &nbsp;<br> {{obj.email}}</p>
+                                         
+                                     </div>
+                                     <div class="col-md-12 a">
+                                         
+                                             <p style="color: white;"><i class="fa-solid fa-phone" style="color: #ffffff;"></i>&nbsp;<br>{{obj.phone}}</p>
+                                         
+                                     </div>
+                                     <div class="col-md-12 a">
+                                        <center>
+                                            <input type="button" value="Contact" id="btnContact" ng-click="doContact(obj.email)" class="btn btn-danger"><br>
+                                            <span ng-model="txt"  style="color: white;" class="fs-10">{{data}}</span>
+                                        </center>
+                                        <br>
+                                     </div>
+                                </div>
+                            </div> 
+                        </div>
+
+                    </div>
+                    <div class="col-md-5">
+                        <div class="row g-2">
+                            <div class="col-md-12">       
+                                <p><b>Content </b><br>{{obj.ifields}}</p>
+                            </div>
+                            <div class="col-md-12">       
+                                <p><b> Gender :</b>&nbsp;{{obj.gender}}</p>
+                            </div>
+                            <div class="col-md-12">       
+                                <p><b> DOB :</b>&nbsp;{{obj.dob}}</p>
+                            </div>
+                            <div class="col-md-12">       
+                                <p><b> Address :</b>&nbsp;{{obj.address}}</p>
+                            </div>
+                            <div class="col-md-12">       
+                                <p><b> City :</b>&nbsp;{{obj.city}}</p>
+                            </div>
+                            <div class="col-md-12">       
+                                <p><b> State :</b>&nbsp;{{obj.state}}</p>
+                            </div>
+                            <hr>
+                            <div class="col-md-12">       
+                                <p> <i class="fa-brands fa-instagram" style="color: #E1306C"></i> &nbsp;<a href="https://www.instagram.com/{{obj.insta}}/" target="_blank" class="card-link" style="text-decoration: none;">&nbsp;{{obj.insta}}</a>
+                                </p>
+                            </div>
+                            <div class="col-md-12">       
+                                <p><i class="fa-brands fa-facebook" style="color: #1f59bd;"></i>  &nbsp;<a href="https://www.facebook.com/{{obj.fb}}/" target="_blank" class="card-link" style="text-decoration: none;">&nbsp;{{obj.fb}}</a>
+                                </p>
+                            </div>
+                            <div class="col-md-12">       
+                                <p><i class="fa-brands fa-x-twitter" style="color: #000000;"></i>  &nbsp;<a href="https://x.com/{{obj.x}}" target="_blank" class="card-link" style="text-decoration: none;">&nbsp;{{obj.x}}</a>
+                                </p>
+                            </div>
+                            
+                            
+
+                        </div>
+                    </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+    
+  <!-- style="box-shadow:-5px 5px 5px #aaaaaa;" -->
+   
+</body>
+</html>

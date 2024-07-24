@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles/project.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="scripts/project.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://github.com/Anemolo/Infinite-Lights.git">
+    <style>
+      .t{
+        color: white;
+      }
+      label{
+        color: white;
+      }
+      input[type="email"],input[type="password"],input[type="text"],input[type="date"]{
+      background-color: black;
+      color: white;
+    }
+    #wait{
+        /* position: absolute; */
+        width: 50px; height:50px;
+        background-image: url(pics/Spinner@1x-1.0s-200px-200px.gif);
+        background-size: contain;
+        bottom: 46%;
+        left: 48.5%;
+        border-radius: 50%;
+        /* border: 1px black solid; */
+        display: none;
+        /* z-index:2; */
+    }
+    </style>
+    
+    
+</head>
+<body style="background-color: black;" >
+    <nav class="navbar  fixed-top" style="background-color: black;">
+        <div class="container-fluid">
+          <a class="navbar-brand fs-2" href="#" style="color: white; font-family:Georgia, 'Times New Roman', Times, serif" >
+            <img src="pics/Screenshot 2024-07-15 224854.png" alt="Logo" width="45" height="36" class="d-inline-block align-text-top">
+            CONNEXUS
+          </a>
+          <form class="d-flex" role="search">
+
+            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" style="margin-right: 5%;" data-bs-target="#exampleModal">SignUp</button>
+          <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" style="margin-right: 8%;"  data-bs-target="#exampleModall">Login</button>
+
+          <div class="btn-group dropdown" >
+            <button type="button" class=" btn dropdown-toggle" data-bs-toggle="dropdown" id="btn" aria-expanded="false">
+                <i class="fa-solid fa-bars" style="color: #ffffff;"></i>
+            </button>
+            
+            <ul class="dropdown-menu dropdown-menu-lg-end animate-dropdwon animate-dropdwon" style="background-color: black; " >
+              <li><a class="dropdown-item txt" href="#services">Services</a></li>
+              <li><a class="dropdown-item txt" href="#team">Team </a></li>
+              <li><a class="dropdown-item txt" href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          </form>
+          
+        </div>
+      </nav>
+      
+      
+
+      <div class="content">
+        <video class="video-background" src="pics/2611250-uhd_3840_2160_30fps.mp4" autoplay loop muted></video>
+        <div class="row g-5">
+            <div class="col-md-12"></div>
+            <div class="col-md-12"></div>
+            <div class="col-md-12"></div>
+            <div class="col-md-12"></div>
+            <div class="col-md-12"></div>
+            <div class="col-md-12 fs-2" style="color: white;" >
+                <center>
+                <span style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Take a highway for your goals and achieve them faster with </span><span style="font-family:Georgia, 'Times New Roman', Times, serif">CONNEXUS</span>
+                </center>
+            </div>
+            <div class="col-md-12">
+                <center>
+                    <a href="#services" class="btn btn-outline-dark fs-3" >Find Out How</a>
+                </center>
+            </div>
+            <div class="col-md-12"></div>
+            <div class="col-md-12"></div>
+            <div class="col-md-12"></div>
+            <div class="col-md-12"></div>
+            <div class="col-md-12"></div>
+            
+            
+        </div>
+      </div>
+      <div class="row content" id="services" style="margin-top: 5%;" >
+        <!-- <video src="pics/sp.mp4" class="video-background" autoplay loop muted style="opacity: 10%;"></video> -->
+        <div class="col-md-10 offset-md-1">
+          <div class="row g-3" >
+          <div class="col-md-12" >
+            <span class="fs-2" style="color: lightgrey; font-family: Verdana, Geneva, Tahoma, sans-serif;">What can we help you with?</span>
+          </div>
+          <div class="col-md-4">
+            <div style="width: 90%; height: 90%;">
+              <img src="pics/sl_z_072523_61700_06.jpg" alt="" style="width: 100%; height: 90%; border: 0px;">
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="row g-4">
+              <div class="col-md-12">
+                <span class="fs-4 txt" >01</span>
+              </div>
+              <div class="col-md-12">
+                <span class="fs-2 txt" style="font-family: 'Times New Roman', Times, serif
+                ;">
+                  Social Media Collaborations
+                </span>
+              </div>
+              <div class="col-md-12">
+                <span class="fs-5 txt" style="color: lightgray;">
+                  More than 3.8 billion people use social media every day. That's around half of the world's population. It's no surprise that e-commerce has experienced such a massive boom with that kind of daily traffic on social channels. For entrepreneurs, social media presents an incredible opportunity, but only if you know the marketing skills to attract and engage audiences.
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          
+          <div class="col-md-4">
+            <div style="width: 90%; height: 100%;">
+              <img src="pics/4ba91ff4-4390-4be7-abc2-1956b60cf440.jpg" alt="" style="width: 100%; height: 100%; border: 0px;">
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="row g-4">
+              <div class="col-md-12">
+                <span class="fs-4 txt" >02</span>
+              </div>
+              <div class="col-md-12">
+                <span class="fs-2 txt" style="font-family: 'Times New Roman', Times, serif
+                ;">
+                  Finding Paid Partnerships
+                </span>
+              </div>
+              <div class="col-md-12">
+                <span class="fs-5 txt" style="color: lightgray;">
+                  Discover lucrative opportunities with our platform, connecting you to high-value paid collaborations. We streamline the process of finding partners who align with your brand and goals, ensuring mutually beneficial relationships. Whether you're an influencer or a business, our curated network and intelligent matching system make it easy to secure rewarding collaborations. Elevate your earnings and expand your reach with our expert services.
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4" style="margin-top: 7%;">
+            <div style="width: 90%; height: 100%;">
+              <img src="pics/freepik-export-20240716071033JoRo.jpeg" alt="" style="width: 100%; height: 100%; border: 0px;">
+            </div>
+          </div>
+          <div class="col-md-8" style="margin-top: 7%;">
+            <div class="row g-4">
+              <div class="col-md-12">
+                <span class="fs-4 txt" >03</span>
+              </div>
+              <div class="col-md-12">
+                <span class="fs-2 txt" style="font-family: 'Times New Roman', Times, serif
+                ;">
+                  Engagement
+                </span>
+              </div>
+              <div class="col-md-12">
+                <span class="fs-5 txt" style="color: lightgray;">
+                  Unlock the potential of your brand with increased engagement through paid collaborations on our website. By partnering with influencers and industry leaders, we create compelling content that captures attention and drives interaction. Our strategic collaborations are designed to amplify your message, reach targeted audiences, and boost your brand's visibility. Experience the impact of authentic endorsements and watch your engagement soar.
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+          </div>
+          
+          </div>
+        </div>
+      </div>
+      <div class="row content" style="margin-top: 5%;">
+
+
+        <div class="col-md-8 offset-md-2">
+          <div class="row g-2">
+          <div class="col-md-12" id="team">
+            <center>
+            <span class="fs-1" style="color: lightgrey; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">TEAM</span>
+            </center>
+          </div>
+          <div class="col-md-12 content" >
+            <video src="pics/149029-795311495_medium.mp4" class="video-background" autoplay loop muted style="opacity: 10%;"></video>
+            <div class="row">
+              <div class="col-md-6">
+                <center>
+                <div class="card" style="background-color: black;  width: 70%; " >
+                  <img src="pics/Screenshot 2024-07-16 152623.png" class="card-img-top" alt="..." width="100%" height="100%">
+                  <div class="card-body">
+                    
+                    <p class="card-text txt">Under the guidance of:</p>
+                    <h5 class="card-title txt">Mr. Rajesh Bansal</h5>
+                  </div>
+                </div>
+                </center>
+              </div>
+              <div class="col-md-6">
+                <center>
+                <div class="card" style="background-color: black;  width: 70%;">
+                  <img src="pics/WhatsApp Image 2024-07-16 at 15.18.05_25e00c1f.jpg" class="card-img-top" alt="..." width="100%" height="100%">
+                  <div class="card-body">
+                    
+                    <p class="card-text txt">Developed By:</p>
+                    <h5 class="card-title txt">Sanamdeep Singh Brar</h5>
+                  </div>
+                </div>
+                </center>
+              </div>
+            </div>
+          </div>
+         
+          </div>
+        </div>
+      </div>
+
+      <div class="row " style="margin-top: 5%;" id="contact" >
+        <div class="col-md-10 offset-md-1">
+          <div class="row g-3" style="margin-top: 1%;">
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-2">
+                  <img src="pics/Screenshot 2024-07-15 224854.png" style="margin-top: 20%;" alt="Logo" width="70%" height="30%" >
+                </div>
+                <div class="col-md-10">
+                  <p ><h2 style="font-family:Georgia, 'Times New Roman', Times, serif ;color: white;">CONNEXUS</h2></p>
+                    <p><span style="color: white;">Take a highway for your goals and achieve them faster</span></p>
+                    <p><span style="color: lightgray;" class="fs-7">2024 BCE - All rights reserved.</span></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="row">
+              <div class="col-md-12">
+                <center>
+                <p><span style="color: lightgray;" class="fs-5">Socials</span></p>
+                </center>
+              </div>
+              <div class="col-md-8 offset-md-4">       
+                <p> <i class="fa-brands fa-instagram" style="color: #E1306C"></i> &nbsp;<a href="https://www.instagram.com/_brar.sanam_/" target="_blank" class="card-link" style="text-decoration: none;">&nbsp;_brar.sanam_</a>
+                </p>
+            </div>
+            <div class="col-md-8 offset-md-4">       
+                <p><i class="fa-brands fa-facebook" style="color: #1f59bd;"></i>  &nbsp;<a href="https://www.facebook.com/{{obj.fb}}/" target="_blank" class="card-link" style="text-decoration: none;">&nbsp;Sanam Brar</a>
+                </p>
+            </div>
+            <div class="col-md-8 offset-md-4">       
+                <p><i class="fa-brands fa-x-twitter" style="color: #ffffff;"></i>  &nbsp;<a href="https://x.com/{{obj.x}}" target="_blank" class="card-link" style="text-decoration: none;">&nbsp;_ur_sam_</a>
+                </p>
+            </div>
+            <div class="col-md-8 offset-md-4">       
+              <p><i class="fa-brands fa-youtube" style="color: #ef1515;"></i> &nbsp;<a href="https://x.com/{{obj.x}}" target="_blank" class="card-link" style="text-decoration: none;">&nbsp;Sanam</a>
+              </p>
+          </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="row">
+                <div class="col-md-12">
+                  <center>
+                  <p><span style="color: lightgray;" class="fs-5"><i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>&nbsp;Location</span></p>
+                  </center>
+                </div>
+                <div class="col-md-12">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.662106908305!2d75.53326897506425!3d31.39587915328305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a51d30c180edf%3A0x5b7633718d17ef33!2sDr%20B%20R%20Ambedkar%20National%20Institute%20of%20Technology%20Jalandhar!5e0!3m2!1sen!2sin!4v1721208430135!5m2!1sen!2sin" width="100%" height="90%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background-color: black;">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 t" id="exampleModalLabel" style="font-family: Georgia, 'Times New Roman', Times, serif;">SignUp</h1>
+                    <button type="button" class="btn-close " style="background-color: white;" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="signupForm" method="post" novalidate>
+                        <div class="mb-3">
+                            <label for="txtEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="txtEmail" style="background-color: black;color: white;" aria-describedby="emailHelp" required>
+                            <div id="txt" class="invalid-feedback">
+                                Please provide a valid email.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtPwd" class="form-label">Password</label>
+                            <input type="password" class="form-control" style="background-color: black;color: white;" id="txtPwd">
+                            <div id="txt2" class="invalid-feedback">
+                                Please provide a valid password.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="conPwd" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" style="background-color: black;color: white;" id="conPwd">
+                            <div id="txt5" class="invalid-feedback">
+                                Incorrect password.
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-label"><b>Account type</b></label><br>
+                            <input class="form-check-input " type="radio" name="acc" style="background-color: black;color: white;" id="radColab" value="Clientel"><span class="t">Clientel</span> 
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input t" type="radio" name="acc" style="background-color: black;color: white;" id="radInf" value="Influencer"><span class="t">Influencer</span> 
+                        </div>
+                        <center>
+                            <button type="button" class="btn btn-outline-light" id="btnSignup">SignUp</button>
+                            <div class="mb-3">
+                                <p><span style="color: white;" id="result" class="form-text"></span></p>
+                            </div>
+                        </center>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModall" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background-color: black;">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 t" id="exampleModalLabel2" style="font-family: Georgia, 'Times New Roman', Times, serif;">Login</h1>
+                    <button type="button" class="btn-close " data-bs-dismiss="modal" style="background-color: white;" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    
+                    <form id="loginForm" method="post">
+                        <div class="mb-3">
+                            <label for="txtEmaill" class="form-label">Email address</label>
+                            <input type="email" class="form-control" style="background-color: black;color: white;" id="txtEmaill" aria-describedby="emailHelp" required>
+                            <div id="txt3" class="invalid-feedback">
+                                Please provide a valid email.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtPwdd" class="form-label">Password</label>
+                            <input type="password" class="form-control" style="background-color: black;color: white;" id="txtPwdd">
+                            <div id="txt4" class="invalid-feedback">
+                                Incorrect password.
+                            </div>
+                        </div>
+                        <center>
+                            <button type="button" class="btn btn-outline-light" id="btnLogin">Login</button>
+                            <div class="mb-3">
+                                <p><span style="color: white;" id="result2"></span></p>
+                            </div>
+                            <div class="mb-3">
+                                <div class="mb-3">
+                                <button type="button" class="btn btn-outline-light " id="forgot" >forgot passsword?</button>
+                                <div id="wait" class="z-3 position-fixed p-2"></div>
+                                </div>
+                            </div>
+                        </center>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>
