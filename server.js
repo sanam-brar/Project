@@ -58,14 +58,14 @@ app.post("/signup-process",function(req,resp)
     var account=req.body.accs;
     var status=1;
 
-    mysql.query("insert into users values(?,?,?,?)",[email,pwd,account,status],function(err){
+    mysql.query("insert into users values(?,?,?,?)",[email,pwd,account,status],function(err,res){
         if(err)
             {
                 resp.send(err);
             }
             else 
             {
-                resp.send("SignUp successful");
+                resp.send(res);
                 console.log("successful");
             }
     })
