@@ -61,7 +61,7 @@ app.post("/signup-process",function(req,resp)
     mysql.query("insert into users values(?,?,?,?)",[email,pwd,account,status],function(err){
         if(err)
             {
-                resp.send("Account already exists");
+                alert(err);
             }
             else 
             {
