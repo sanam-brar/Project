@@ -160,7 +160,7 @@ app.post("/iprofile",function(req,resp){
 {
     if(err)
         {
-            console.log(err.message);
+            resp.send(err.message);
 
         }
         else 
