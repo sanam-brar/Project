@@ -89,13 +89,13 @@ $(document).ready(function(){
                 {
                     $("#result").html("SignedUp successfully.");
                     location.href="inf-dash.html";
-                    localStorage.setItem("activeuser",$("#txtEmaill").val());
+                    localStorage.setItem("activeuser",$("#txtEmail").val());
                 }
                 else if(resp[0].utype==="Clientel")
                 {
                     $("#result").html("SignedUp successfully.");
                     location.href="clientel-dash.html";
-                    localStorage.setItem("activeuser",$("#txtEmaill").val());
+                    localStorage.setItem("activeuser",$("#txtEmail").val());
                 }
             
         }).fail(function(err){
