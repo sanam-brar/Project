@@ -65,19 +65,8 @@ app.post("/signup-process",function(req,resp)
             }
             else 
             {
-                
-            mysql.query("Select * from users where email=?",[email],function(err,res)
-            {
-            if(err!=null)
-            {
-            // resp.send(err.message);
-            console.log(err.message);
-            return;
-            }
-            resp.send(res);
-            // console.log(resultt);
-             })
-                
+                resp.send("SignUp successful");
+                console.log("successful");
             }
     })
 

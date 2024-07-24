@@ -85,19 +85,7 @@ $(document).ready(function(){
         }
 
         $.ajax(obj).done(function(resp){
-            if(resp[0].utype==="Influencer")
-                {
-                    $("#result").html("SignedUp successfully.");
-                    location.href="inf-dash.html";
-                    localStorage.setItem("activeuser",$("#txtEmail").val());
-                }
-                else if(resp[0].utype==="Clientel")
-                {
-                    $("#result").html("SignedUp successfully.");
-                    location.href="clientel-dash.html";
-                    localStorage.setItem("activeuser",$("#txtEmail").val());
-                }
-            
+            $("#result").html(resp);
         }).fail(function(err){
             alert(err.statusText);
         })
