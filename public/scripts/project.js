@@ -85,7 +85,16 @@ $(document).ready(function(){
         }
 
         $.ajax(obj).done(function(resp){
-            
+            if(resp[0].utype==="Influencer")
+                {
+                    location.href="inf-dash.html";
+                    localStorage.setItem("activeuser",$("#txtEmaill").val());
+                }
+                else if(resp[0].utype==="Clientel")
+                {
+                    location.href="clientel-dash.html";
+                    localStorage.setItem("activeuser",$("#txtEmaill").val());
+                }
             $("#result").html(resp);
         }).fail(function(err){
             alert(err.statusText);
