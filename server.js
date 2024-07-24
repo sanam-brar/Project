@@ -2,7 +2,7 @@ var express=require("express");
 var mysql2=require("mysql2");
 var fileuploader=require("express-fileupload");
 var nodemailer=require("nodemailer");
-import { v2 as cloudinary } from 'cloudinary';
+
 
 
 let app=express();
@@ -154,51 +154,7 @@ app.post("/iprofile",function(req,resp){
     {
         fileName="NoPic.jpg";  
     }
-//    //////////////////////////////////////////////////////
-
-(async function() {
-
-    // Configuration
-    cloudinary.config({ 
-        cloud_name: 'dnhiwjrv3', 
-        api_key: '564438249199338', 
-        api_secret: 'P0WIw7Gn10428oodFRhfDMbYh5c'
-    });
-    
-    // Upload an image
-     const uploadResult = await cloudinary.uploader
-       .upload(
-           'https://res.cloudinary.com/fileName', {
-               public_id: 'shoes',
-           }
-       )
-       .catch((error) => {
-           console.log(error);
-       });
-    
-    console.log(uploadResult);
-    
-    // Optimize delivery by resizing and applying auto-format and auto-quality
-    const optimizeUrl = cloudinary.url('shoes', {
-        fetch_format: 'auto',
-        quality: 'auto'
-    });
-    
-    console.log(optimizeUrl);
-    
-    // Transform the image: auto-crop to square aspect_ratio
-    const autoCropUrl = cloudinary.url('shoes', {
-        crop: 'auto',
-        gravity: 'auto',
-        width: 100,
-        height: 100,
-    });
-    
-    console.log(autoCropUrl);    
-})();
-//    //////////////////////////////////////////////////////
-
-
+   
     
 
     mysql.query("insert into iprofile values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",[req.body.inputEmail,req.body.fname,req.body.lname,req.body.inputGender,req.body.inputDate,req.body.inputPhone,req.body.inputAddress,req.body.inputCity,req.body.inputState,req.body.inputZip,str,req.body.insta,req.body.fb,req.body.x,req.body.txt,fileName],function(err)
