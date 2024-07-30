@@ -36,10 +36,10 @@
                     }
                     $("#fname").val(jsonAry[0].fname);
                     $("#lname").val(jsonAry[0].lname);
-                    $("#prev").prop("src","uploads/"+jsonAry[0].ImgPath);
+                    $("#prev").prop("src",jsonAry[0].ImgPath);
                     $("#hdn").val(jsonAry[0].ImgPath);
                     $("#inputGender").val(jsonAry[0].gender);
-                    $("#inputDate").val(jsonAry[0].dob);
+                    $("#inputDate").val(jsonAry[0].dob.split("T")[0]);
                     $("#inputPhone").val(jsonAry[0].phone);
                     $("#inputAddress").val(jsonAry[0].address);
                     $("#inputCity").val(jsonAry[0].city);
